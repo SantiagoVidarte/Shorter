@@ -1,7 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
-import Image from "next/image";
-
+import { FiCopy } from "react-icons/fi";
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [shortUrl, setShortUrl] = useState("");
@@ -63,17 +62,10 @@ export default function Home() {
             </form>
           </div>
           {shortUrl && (
-            <button
-              onClick={copyToClipboard}
-              className=" col-span-2 p-4 m-2 gap-2"
-            >
-              <Image
-                svg="copy"
-                alt="Copy to clipboard"
-                type="button"
-                className="bg-blue-500 cursor-pointer"
-              ></Image>
-            </button>
+          <FiCopy
+          onClick={copyToClipboard}
+          className="text-blue-500 cursor-pointer w-6 h-6"
+        />
           )}
         </main>
         <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center"></footer>
