@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef } from 'react';
-
+import Image from "next/image";
 
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -54,13 +54,14 @@ export default function Home() {
             {shortUrl && (
               <div className=" col-span-2 p-4 m-2 gap-2">
                 <span>{shortUrl}</span>
-                <button
+                <Image
+                svg="copy"
+                  alt="Copy to clipboard"
                   type="button"
                   onClick={copyToClipboard}
-                  className="bg-blue-500 text-white rounded-md p-2 mx-2 hover:bg-blue-600 transition duration-200"
+                  className="bg-blue-500 cursor-pointer"
                 >
-                  Copy to Clipboard
-                </button>
+                </Image>
               </div>
             )}
         </main>
