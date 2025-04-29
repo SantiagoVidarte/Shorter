@@ -6,7 +6,11 @@ export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [shortUrl, setShortUrl] = useState('');
 
-  const handleSubmit = (e) => {
+  interface ShortUrlResponse {
+    shortUrl: string;
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const url = inputRef.current ? inputRef.current.value : null;
     fetch('/api/shortUrl', {
@@ -14,11 +18,11 @@ export default function Home() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url }),
     })
-      .then((res => res.json()))
-      .then((data => {
+      .then((res) => res.json() as Promise<ShortUrlResponse>)
+      .then((data) => {
         setShortUrl(data.shortUrl);
-      }))
-  }
+      });
+  };
   const copyToClipboard = () => {
     if (shortUrl) {
       navigator.clipboard.writeText(shortUrl)

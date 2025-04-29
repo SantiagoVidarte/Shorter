@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+# .eslintignore
+app/generated
+
 # testing
 /coverage
 
